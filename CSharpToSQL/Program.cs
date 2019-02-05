@@ -13,7 +13,7 @@ namespace CSharpToSQL
         static void Main(string[] args)
         {
             //var user = new User();
-            var user = new User(0, "Trashy Tom", "bengals", "Tom", "Trash", "5555555555", "houseofpain@gmail.com", true, true);
+            var user = new User(0, "Crumby Cam", "bengals", "Cam", "Crumb", "5555555555", "houseofpain@gmail.com", true, true);
             User[] users = User.GetAllUsers();
             var returnCode = User.InsertUser(user);
             foreach(var u in users)
@@ -22,10 +22,10 @@ namespace CSharpToSQL
                 {
                     continue;
                 }
-                Console.WriteLine($"{u.Firstname} {u.Lastname} , ={u.Username}");
+                Console.WriteLine(u.ToPrint());
             }
             User userpk = User.GetByPrimaryKey(1);
-            Console.WriteLine($"{userpk.Firstname} {userpk.Lastname},{userpk.Username}");
+            Console.WriteLine(userpk.ToPrint());
 
             Console.ReadKey();
         }

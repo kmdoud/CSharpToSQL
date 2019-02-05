@@ -111,7 +111,7 @@ namespace CSharpToSQL
                 Connection.Close();
                 return null;
             }
-            var users = new User[10];
+            var users = new User[100];
             var idx = 0;
             while (reader.Read())
             {
@@ -135,6 +135,12 @@ namespace CSharpToSQL
         public User()
         {
 
+        }
+
+
+        public string ToPrint()
+        {
+            return $"[ToPrint()] Id={Id}, Username= {Username}, Name = {Firstname} {Lastname}";
         }
     }
 }
