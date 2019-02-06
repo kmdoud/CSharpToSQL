@@ -15,17 +15,35 @@ namespace CSharpToSQL
             //var user = new User();
             var user = new User(0, "Crumby Cam", "bengals", "Cam", "Crumb", "5555555555", "houseofpain@gmail.com", true, true);
             User[] users = User.GetAllUsers();
-            var returnCode = User.InsertUser(user);
+            //var returnCode = User.InsertUser(user);
             foreach(var u in users)
             {
                 if(u == null)
                 {
                     continue;
                 }
-                Console.WriteLine(u.ToPrint());
+                Console.WriteLine(u);
             }
-            User userpk = User.GetByPrimaryKey(1);
-            Console.WriteLine(userpk.ToPrint());
+            const int ID = 5;
+            User userpk = User.GetByPrimaryKey(ID);
+            Console.WriteLine(userpk);
+
+            userpk.Password = "thiscodeisdifficult";
+            var updateSuccess = User.UpdateUser(userpk);
+            if(updateSuccess)
+            {
+                Console.WriteLine("Update Successful");
+            }
+            else
+            {
+                Console.WriteLine("Update Failed");
+            }
+
+            var deleteSuccess = User.DeleteUser(ID);
+            if (!deleteSuccess)
+            {
+                Console.WriteLine("Delete Failed!");
+            }
 
             Console.ReadKey();
         }
